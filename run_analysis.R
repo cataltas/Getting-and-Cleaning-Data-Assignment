@@ -46,17 +46,11 @@ names(tidy_data)[3]<-"Feature"
 #Compute the mean for each feature for each subject for each activity
 data_mean<-dcast(tidy_data,Subject + Activity~ Feature,mean)
 
-#Tidy data for mean values in narrow shape
-tidy_data_mean<-melt(data_mean,id=c("Subject","Activity"),measure.vars = names(extracted_features))
-
-#Change column names to have descriptive names
-names(tidy_data_mean)[3]<-"Feature"
-names(tidy_data_mean)[4]<-"Mean Value"
 
 #Print the tidy data with mean values 
-tidy_data_mean
+data_mean
 
-write.table(tidy_data_mean,file="./tidy_data_mean.txt",row.names = FALSE)
+write.table(data_mean,file="./tidy_data_mean.txt",row.names = FALSE)
 
 
 
